@@ -1,0 +1,26 @@
+<%= form_with model: book do |form| %>
+
+  <div>
+    <%= form.label :title, "タイトル" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :author, "著者" %><br>
+    <%= form.text_field :author %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :memo, "メモ" %><br>
+    <%= form.text_area :memo %>
+  </div>
+
+  <br>
+
+  <%= form.submit "登録" %>
+
+<% end %>

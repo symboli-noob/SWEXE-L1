@@ -1,0 +1,24 @@
+<h1>本一覧</h1>
+
+<%= link_to "本を登録する", new_book_path %>
+
+<hr>
+
+<% @books.each do |book| %>
+  <p>
+    <strong>タイトル：</strong>
+    <%= book.title %>
+  </p>
+
+  <p>
+    <strong>著者：</strong>
+    <%= book.author %>
+  </p>
+
+  <%= link_to "詳細", book_path(book) %>
+  <%= link_to "編集", edit_book_path(book) %>
+
+  <%= button_to "削除", book_path(book), method: :delete %>
+
+  <hr>
+<% end %>
