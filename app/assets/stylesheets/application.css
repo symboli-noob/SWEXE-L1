@@ -1,10 +1,482 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+/* ========================================
+   基本設定
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+
+  color: #1e293b;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #eef4ff 50%,
+      #f8fafc 100%
+    );
+
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   メインコンテンツ
+======================================== */
+
+.container {
+  width: 92%;
+  max-width: 900px;
+
+  margin: 60px auto;
+  padding: 36px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+
+/* ========================================
+   見出し
+======================================== */
+
+h1 {
+  margin: 0 0 30px;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  letter-spacing: 0.03em;
+
+  color: #0f172a;
+
+  position: relative;
+
+  padding-bottom: 14px;
+}
+
+h1::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 55px;
+  height: 4px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #60a5fa
+    );
+}
+
+h2 {
+  margin: 0 0 15px;
+
+  font-size: 21px;
+  color: #172554;
+}
+
+
+/* ========================================
+   本一覧
+======================================== */
+
+.book-list {
+  margin-top: 30px;
+
+  display: grid;
+  gap: 20px;
+}
+
+.book-card {
+  position: relative;
+
+  padding: 24px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.10);
+}
+
+.book-card p {
+  margin: 8px 0;
+
+  color: #475569;
+}
+
+.book-card strong {
+  color: #1e293b;
+}
+
+
+/* ========================================
+   フォーム
+======================================== */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #334155;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  font-size: 15px;
+
+  color: #1e293b;
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #94a3b8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3b82f6;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.form-group textarea {
+  min-height: 140px;
+
+  resize: vertical;
+}
+
+
+/* ========================================
+   ボタン共通
+======================================== */
+
+.btn,
+.btn-small,
+.btn-delete {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+
+/* 登録・更新 */
+
+.btn {
+  padding: 11px 20px;
+
+  font-size: 14px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  box-shadow:
+    0 4px 12px rgba(37, 99, 235, 0.22);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(37, 99, 235, 0.28);
+}
+
+
+/* 詳細・編集・戻る */
+
+.btn-small {
+  padding: 8px 14px;
+
+  font-size: 13px;
+
+  color: #334155;
+
+  background: #f1f5f9;
+
+  border: 1px solid #e2e8f0;
+}
+
+.btn-small:hover {
+  background: #e2e8f0;
+
+  transform: translateY(-1px);
+}
+
+
+/* 削除 */
+
+.btn-delete {
+  padding: 8px 14px;
+
+  font-size: 13px;
+
+  color: #ffffff;
+
+  background: #ef4444;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 12px rgba(220, 38, 38, 0.20);
+}
+
+
+/* ========================================
+   ボタン配置
+======================================== */
+
+.actions {
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #f1f5f9;
+}
+
+.actions form {
+  margin: 0;
+}
+
+
+/* ========================================
+   Flashメッセージ
+======================================== */
+
+.flash {
+  width: 92%;
+  max-width: 900px;
+
+  margin: 20px auto 0;
+
+  padding: 14px 18px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+
+/* 成功 */
+
+.flash.notice {
+  color: #166534;
+
+  background: #f0fdf4;
+
+  border: 1px solid #bbf7d0;
+
+  border-left: 5px solid #22c55e;
+}
+
+
+/* エラー */
+
+.flash.alert {
+  color: #991b1b;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  border-left: 5px solid #ef4444;
+}
+
+
+/* ========================================
+   バリデーションエラー
+======================================== */
+
+.error-box {
+  margin-bottom: 25px;
+
+  padding: 18px 20px;
+
+  color: #991b1b;
+
+  background: #fff1f2;
+
+  border: 1px solid #fecdd3;
+  border-left: 5px solid #e11d48;
+
+  border-radius: 10px;
+}
+
+.error-box p {
+  margin: 0 0 8px;
+
+  font-weight: 700;
+}
+
+.error-box ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.error-box li {
+  margin: 3px 0;
+}
+
+
+/* ========================================
+   リンク
+======================================== */
+
+a {
+  color: #2563eb;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+
+/* ========================================
+   スマートフォン
+======================================== */
+
+@media (max-width: 650px) {
+
+  .container {
+    width: 94%;
+
+    margin: 25px auto;
+
+    padding: 24px 18px;
+
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .book-card {
+    padding: 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions a,
+  .actions form,
+  .actions button {
+    width: 100%;
+  }
+
+  .btn,
+  .btn-small,
+  .btn-delete {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .flash {
+    width: 94%;
+  }
+}

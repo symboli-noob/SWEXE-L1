@@ -9,9 +9,13 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.save
 
-    redirect_to @book
+    if @book.save
+      redirect_to @book, notice: "本を登録しました。"
+    else
+      flash.now[:alert] = "入力内容を確認してください。"
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -24,16 +28,20 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    @book.update(book_params)
 
-    redirect_to @book
+    if @book.update(book_params)
+      redirect_to @book, notice: "本の情報を更新しました。"
+    else
+      flash.now[:alert] = "入力内容を確認してください。"
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
 
-    redirect_to books_path
+    redirect_to books_path, notice: "本を削除しました。"
   end
 
   private
