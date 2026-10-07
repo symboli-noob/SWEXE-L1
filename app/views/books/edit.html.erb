@@ -1,11 +1,6 @@
-<h1>本を編集</h1>
+<h2>本の編集</h2>
 
 <%= render "form", book: @book %>
 
-<br>
-
-<%= link_to "詳細に戻る", book_path(@book) %>
-
-<br>
-
-<%= link_to "一覧に戻る", books_path %>
+<%= link_to "詳細へ戻る", book_path(@book) %>
+<%= link_to "一覧へ戻る", books_path %>

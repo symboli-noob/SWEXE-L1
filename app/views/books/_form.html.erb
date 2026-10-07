@@ -1,8 +1,8 @@
 <%= form_with model: book do |form| %>
 
   <% if book.errors.any? %>
-    <div class="error-box">
-      <p>入力エラーがあります。</p>
+    <div class="error-message">
+      <h3>入力内容にエラーがあります</h3>
 
       <ul>
         <% book.errors.full_messages.each do |message| %>
@@ -27,6 +27,8 @@
     <%= form.text_area :memo %>
   </div>
 
-  <%= form.submit book.persisted? ? "更新" : "登録", class: "btn" %>
+  <div>
+    <%= form.submit %>
+  </div>
 
 <% end %>

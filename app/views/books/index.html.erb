@@ -1,24 +1,34 @@
-<h1>本一覧</h1>
+<h2>本一覧</h2>
 
-<%= link_to "本を登録する", new_book_path %>
+<%= link_to "新しい本を登録", new_book_path, class: "button" %>
 
-<hr>
+<div class="book-list">
 
-<% @books.each do |book| %>
-  <p>
-    <strong>タイトル：</strong>
-    <%= book.title %>
-  </p>
+  <% @books.each do |book| %>
 
-  <p>
-    <strong>著者：</strong>
-    <%= book.author %>
-  </p>
+    <div class="book-card">
 
-  <%= link_to "詳細", book_path(book) %>
-  <%= link_to "編集", edit_book_path(book) %>
+      <h3><%= book.title %></h3>
 
-  <%= button_to "削除", book_path(book), method: :delete %>
+      <p>
+        著者：
+        <%= book.author %>
+      </p>
 
-  <hr>
-<% end %>
+      <p>
+        <%= link_to "詳細", book_path(book) %>
+        <%= link_to "編集", edit_book_path(book) %>
+
+        <%= link_to "削除",
+                    book_path(book),
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "本当に削除しますか？"
+                    } %>
+      </p>
+
+    </div>
+
+  <% end %>
+
+</div>
